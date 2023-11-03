@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BaranovGlazki"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" FontFamily="Tw Cen TM" Icon="Image/Глазки-save.ico">
+        Title="MainWindow" MinHeight="450" MinWidth="800" FontFamily="Tw Cen TM" Icon="Image/Глазки-save.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>

@@ -9,6 +9,38 @@
       Title="AddEditPage">
 
     <Grid>
-        <TextBlock Text="Привет" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></TextBlock>
+        <ListView Name="ServiceListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <Image Width ="100" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center">
+                <Image.Source>
+                    <Binding Path="Logo">
+                        <Binding.TargetNullValue>
+                            <ImageSource>
+                                Image/Глазки-save.ico
+                            </ImageSource>
+                        </Binding.TargetNullValue>
+                    </Binding>
+                </Image.Source>
+            </Image>
+            <TextBlock Text="{Binding Phone}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
+            <TextBlock Text="{Binding Priority}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontSize="20"></TextBlock>
+            <TextBlock Text="{Binding AgentTypeID}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" FontSize="20"></TextBlock>
+            <TextBlock Text="{Binding Title}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="16"></TextBlock>
+        </ListView>
     </Grid>
 </Page>

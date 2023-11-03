@@ -9,6 +9,43 @@
       Title="ProductPage">
 
     <Grid>
-        <Button Content="Вперед" Height="30" Width="175" Background="#FFB175EE" Click="Button_Click"></Button>
+        <ListView Name="ServiceListView" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Width="100" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center">
+                            <Image.Source>
+                                <Binding Path="Logo">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>
+                                            Image/Глазки-save.png
+                                        </ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1"> 
+                            <TextBlock Text="{Binding AgentTypeString}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20"></TextBlock>
+                            <TextBlock Text=" | " Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20"></TextBlock>
+                            <TextBlock Text="{Binding Title}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Phone}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="{Binding Priority, StringFormat=Приоритет : {0}}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="20"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </Grid>
 </Page>

@@ -23,6 +23,10 @@ namespace BaranovGlazki
         public ProductPage()
         {
             InitializeComponent();
+
+            var currentServices = Baranov_glazkiEntities.GetContext().Agent.ToList();
+
+            ServiceListView.ItemsSource = currentServices;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -18,3 +18,10 @@ D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\obj\Debug\BaranovGlazki.
 D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\obj\Debug\BaranovGlazki.exe
 D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\obj\Debug\BaranovGlazki.pdb
 D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\obj\Debug\App.baml
+D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\bin\Debug\EntityFramework.dll
+D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\bin\Debug\EntityFramework.SqlServer.dll
+D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\bin\Debug\EntityFramework.xml
+D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\bin\Debug\EntityFramework.SqlServer.xml
+D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\bin\Debug\ru\EntityFramework.resources.dll
+D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\obj\Debug\BaranovGlazki_Content.g.cs
+D:\C# scripts\RepositGlazki\BaranovGlazki\BaranovGlazki\obj\Debug\BaranovGlazki.csproj.CopyComplete
