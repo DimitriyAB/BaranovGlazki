@@ -8,8 +8,48 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductPage">
 
+
     <Grid>
-        <ListView Name="ServiceListView" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <WrapPanel Orientation="Horizontal">
+            <StackPanel Margin="20" Orientation="Horizontal">
+                <TextBox Name="TBoxSearch" TextChanged="TBoxSearch_TextChanged"
+                        Width="300" FontSize="15"></TextBox>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <ComboBox Name="ComboTypeSort" SelectionChanged="ComboTypeSort_SelectionChanged"
+                          FontSize="15" Width="300" Margin="10">
+                    <TextBlock>Сортировка</TextBlock>
+                    <TextBlock>Наименование по возрастанию</TextBlock>
+                    <TextBlock>Наименование по убыванию</TextBlock>
+                    <TextBlock>Скидка по возрастанию</TextBlock>
+                    <TextBlock>Скидка по убыванию</TextBlock>
+                    <TextBlock>Приоритет по возрастанию</TextBlock>
+                    <TextBlock>Приоритет по убыванию</TextBlock>
+                </ComboBox>
+                <ComboBox Name="ComboTypeAgTy" SelectionChanged="ComboTypeAgTy_SelectionChanged"
+                          FontSize="15" Width="200" Margin="10">
+                    <TextBlock>Все</TextBlock>
+                    <TextBlock>МФО</TextBlock>
+                    <TextBlock>ООО</TextBlock>
+                    <TextBlock>ЗАО</TextBlock>
+                    <TextBlock>МКК</TextBlock>
+                    <TextBlock>ОАО</TextBlock>
+                    <TextBlock>ПАО</TextBlock>
+                </ComboBox>
+            </StackPanel>
+        </WrapPanel>
+
+        <ListView Name="ServiceListView" Grid.Row="2" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -35,7 +75,7 @@
                                 </Binding>
                             </Image.Source>
                         </Image>
-                        <StackPanel Orientation="Horizontal" Grid.Column="1"> 
+                        <StackPanel Orientation="Horizontal" Grid.Column="1">
                             <TextBlock Text="{Binding AgentTypeString}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20"></TextBlock>
                             <TextBlock Text=" | " Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20"></TextBlock>
                             <TextBlock Text="{Binding Title}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20"></TextBlock>
