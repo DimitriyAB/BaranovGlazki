@@ -20,6 +20,12 @@ namespace BaranovGlazki
     /// </summary>
     public partial class ProductPage : Page
     {
+        int CounteRecords;
+        int CountPage;
+        int CurrentPage = 0;
+
+        List<Agent> CurrentPagelist = new List<Agent>();
+        List<Agent> TableList;
         public ProductPage()
         {
             InitializeComponent();
@@ -32,25 +38,6 @@ namespace BaranovGlazki
             ComboTypeAgTy.SelectedIndex = 0;
 
             UpdateProduct();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new AddEditPage());
-        }
-
-        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateProduct();
-        }              
-        private void ComboTypeAgTy_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateProduct();
-        }
-
-        private void ComboTypeSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateProduct() ;
         }
 
         private void UpdateProduct()
@@ -88,15 +75,15 @@ namespace BaranovGlazki
             }
 
             currentProduct = currentProduct.Where(p => p.Title.ToLower().Contains(TBoxSearch.Text.ToLower())
-            ||p.Phone.Replace("+","").Replace(" ","").Replace("(","").Replace(")","").Replace("-","").Contains(TBoxSearch.Text)
-            ||p.Email.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+            || p.Phone.Replace("+", "").Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "").Contains(TBoxSearch.Text)
+            || p.Email.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
 
             if (ComboTypeSort.SelectedIndex == 0)
             {
                 currentProduct = currentProduct.ToList();
             }
             if (ComboTypeSort.SelectedIndex == 1)
-            { 
+            {
                 currentProduct = currentProduct.OrderBy(p => p.Title).ToList();
             }
             if (ComboTypeSort.SelectedIndex == 2)
@@ -105,7 +92,7 @@ namespace BaranovGlazki
             }
             if (ComboTypeSort.SelectedIndex == 3)
             {
-                
+
             }
             if (ComboTypeSort.SelectedIndex == 4)
             {
@@ -121,6 +108,133 @@ namespace BaranovGlazki
             }
 
             ServiceListView.ItemsSource = currentProduct;
+
+            TableList = currentProduct;
+
+            ChangePage(0, 0);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage());
+        }
+
+        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateProduct();
+        }
+        private void ComboTypeAgTy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateProduct();
+        }
+
+        private void ComboTypeSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateProduct();
+        }
+
+        private void LeftDirButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePage(1, null);
+        }
+
+        private void RightDirButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePage(2, null);
+        }
+        private void ChangePage(int direction, int? selectedPage)
+        {
+            CurrentPagelist.Clear();
+            CounteRecords = TableList.Count;
+
+            if (CounteRecords % 10 > 0)
+            {
+                CountPage = CounteRecords / 10 + 1;
+            }
+            else
+            {
+                CountPage = CounteRecords / 10;
+            }
+
+            Boolean Ifupdate = true;
+
+            int min;
+
+            if (selectedPage.HasValue)
+            {
+                if (selectedPage >= 0 && selectedPage <= CountPage)
+                {
+                    CurrentPage = (int)selectedPage;
+                    min = CurrentPage * 10 + 10 < CounteRecords ? CurrentPage * 10 + 10 : CounteRecords;
+                    for (int i = CurrentPage * 10; i < min; i++)
+                    {
+                        CurrentPagelist.Add(TableList[i]);
+                    }
+                }
+            }
+            else
+            {
+                switch (direction)
+                {
+                    case 1:
+                        if (CurrentPage > 0)
+                        {
+                            CurrentPage--;
+                            min = CurrentPage * 10 + 10 < CounteRecords ? CurrentPage * 10 + 10 : CounteRecords;
+                            for (int i = CurrentPage * 10; i < min; i++)
+                            {
+                                CurrentPagelist.Add(TableList[i]);
+                            }
+                        }
+                        else
+                        {
+                            Ifupdate = false;
+                        }
+                        break;
+
+                    case 2:
+                        if (CurrentPage < CountPage - 1)
+                        {
+                            CurrentPage++;
+                            min = CurrentPage * 10 + 10 < CounteRecords ? CurrentPage * 10 + 10 : CounteRecords;
+                            for (int i = CurrentPage * 10; i < min; i++)
+                            {
+                                CurrentPagelist.Add(TableList[i]);
+                            }
+                        }
+                        else
+                        {
+                            Ifupdate = false;
+                        }
+                        break;
+                }
+            }
+
+            if (Ifupdate)
+            {
+                PageListBox.Items.Clear();
+
+                for (int i = 1; i <= CountPage; i++)
+                {
+                    PageListBox.Items.Add(i);
+                }
+                PageListBox.SelectedIndex = CurrentPage;
+
+                min = CurrentPage * 10 + 10 < CounteRecords ? CurrentPage * 10 + 10 : CounteRecords;
+                TBCount.Text = min.ToString();
+                TBAllRecords.Text = " из " + CounteRecords.ToString();
+
+
+                ServiceListView.ItemsSource = CurrentPagelist;
+                ServiceListView.Items.Refresh();
+            }
+
+        }
+
+
+        private void PageListBox_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ChangePage(0, Convert.ToInt32(PageListBox.SelectedItem.ToString()) - 1);
         }
     }
 }

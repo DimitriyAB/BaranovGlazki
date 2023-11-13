@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BaranovGlazki"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="450" MinWidth="800" FontFamily="Tw Cen TM" Icon="Image/Глазки-save.ico">
+        Title="Baranov_Glazki-Save" MinHeight="450" MinWidth="800" FontFamily="Tw Cen TM" Icon="Image/Глазки-save.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
@@ -13,7 +13,7 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Image Source="Image/Глазки-save.ico" HorizontalAlignment="Left"></Image>
-        <TextBlock Text="Услуги" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="Глазки-Save" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <Frame Grid.Row = "1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden"></Frame>
         <Button Content="Назад" Name="BtnBack" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="175" Click="BtnBack_Click" Margin="5" Background="#FFB175EE"></Button>
     </Grid>
