@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:BaranovGlazki"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProductPage">
+      Title="ProductPage" FontFamily="Tw Cen MT" IsVisibleChanged="Page_IsVisibleChanged">
 
 
     <Grid>
@@ -38,6 +38,7 @@
             <StackPanel Margin="20" Orientation="Horizontal">
                 <TextBox Name="TBoxSearch" TextChanged="TBoxSearch_TextChanged"
                         Width="300" FontSize="15"></TextBox>
+
             </StackPanel>
 
 
@@ -65,6 +66,8 @@
             </StackPanel>
         </WrapPanel>
 
+        <Button Content="Добавить" Name="AddButton" Click="AddButton_Click"
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
         <ListView Name="ServiceListView" Grid.Row="2" >
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -99,6 +102,10 @@
                         </StackPanel>
                         <TextBlock Text="{Binding Phone}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
                         <TextBlock Text="{Binding Priority, StringFormat=Приоритет : {0}}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="20"></TextBlock>
+
+                        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                            <Button Name="EditButton" Content="редактировать" Margin="2" Click="EditButton_Click"></Button>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

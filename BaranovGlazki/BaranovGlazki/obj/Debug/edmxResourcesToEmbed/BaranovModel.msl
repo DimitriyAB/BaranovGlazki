@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище Baranov_glazkiModelContainer" CdmEntityContainer="Baranov_glazkiEntities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Baranov_glazkiModelContainer" CdmEntityContainer="Baranov_glazkiEntities1">
     <EntitySetMapping Name="Agent">
       <EntityTypeMapping TypeName="Baranov_glazkiModel.Agent">
         <MappingFragment StoreEntitySet="Agent">

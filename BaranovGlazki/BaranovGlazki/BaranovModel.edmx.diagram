@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0a7b10cf2c8d410b9cb6ddfea40f8387" Name="Diagram1">
+      <Diagram DiagramId="34aa8834bf2f4ad3b10b583873a6b00c" Name="Diagram1">
         <EntityTypeShape EntityType="Baranov_glazkiModel.Agent" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Baranov_glazkiModel.AgentPriorityHistory" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Baranov_glazkiModel.AgentType" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />

@@ -13,19 +13,20 @@ namespace BaranovGlazki
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Baranov_glazkiEntities : DbContext
+    public partial class Baranov_glazkiEntities1 : DbContext
     {
-        private static Baranov_glazkiEntities _context;
+        private static Baranov_glazkiEntities1 _context;
 
-        public static Baranov_glazkiEntities GetContext()
+        public static Baranov_glazkiEntities1 GetContext()
         {
-            if(_context == null)
-                _context = new Baranov_glazkiEntities();
+            if (_context == null)
+            {
+                _context = new Baranov_glazkiEntities1();
+            }
             return _context;
-            
         }
-        public Baranov_glazkiEntities()
-            : base("name=Baranov_glazkiEntities")
+        public Baranov_glazkiEntities1()
+            : base("name=Baranov_glazkiEntities1")
         {
         }
     
@@ -47,6 +48,5 @@ namespace BaranovGlazki
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Shop> Shop { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
-
     }
 }
